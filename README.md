@@ -1,16 +1,16 @@
-# Angular 2+ Eonasdan Bootstrap-datetimepicker Wrapper Component
+# Angular 2+ Eonasdan Tempus Dominus Bootstrap3 datetimepicker Wrapper Component
 
-This is a Angular 2+ wrapper component around the bootstrap-datetimepicker.
+This is a Angular 2+ wrapper component around the Tempus Dominus Bootstrap3 datetimepicker.
 
 Documentation for the original Eonasdan Bootstrap-datetimepicker can be found here: 
 
-  https://eonasdan.github.io/bootstrap-datetimepicker/
+  https://tempusdominus.github.io/bootstrap-3/
 
 Documentation for Moment.js can be found here:
 
   https://momentjs.com/docs
 
-Just as the original bootstrap-datetimepicker, it is based on Bootstrap and jQuery (and Angular, of course).
+Just as the original bootstrap3 datetimepicker, it is based on Bootstrap and jQuery (and Angular, of course).
 
 It handles the initialization of the component, plus the interface between jQuery and Angular.
 

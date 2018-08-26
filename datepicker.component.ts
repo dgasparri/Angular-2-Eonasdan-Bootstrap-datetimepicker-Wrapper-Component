@@ -69,7 +69,8 @@ export class DatepickerComponent implements  AfterViewInit {
 
     $('#' + this.datePickerId)
         .datetimepicker(pickerOptions)
-        .on('dp.change', selectedDate => this.onDateChange(selectedDate));
+        .on('change.datetimepicker', selectedDate => this.onDateChange(selectedDate))
+        .on('dp.change', selectedDate => this.onDateChange(selectedDate)); //Backward compatible
 
   }
 
