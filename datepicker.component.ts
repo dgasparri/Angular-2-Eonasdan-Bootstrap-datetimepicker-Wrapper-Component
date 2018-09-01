@@ -64,7 +64,7 @@ export class DatepickerComponent implements  AfterViewInit, OnChanges {
     if (this.selectedDate) {
       const inputDate = Moment(this.selectedDate, this._ioDateFormat);
       if (inputDate.isValid()) {
-        pickerOptions['selectedDate'] = inputDate;
+        pickerOptions['date'] = inputDate;
       }
     }
 
