@@ -1,4 +1,4 @@
-import { Component, Input, Output, AfterViewInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnChanges, AfterViewInit, EventEmitter } from '@angular/core';
 import * as Moment from 'moment';
 import 'moment/locale/it';
 
@@ -9,7 +9,7 @@ declare var $: any;
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html'
 })
-export class DatepickerComponent implements  AfterViewInit {
+export class DatepickerComponent implements  AfterViewInit, OnChanges {
 
   @Input()  selectedDate: string;
   @Output() selectedDateChange = new EventEmitter();
@@ -30,6 +30,7 @@ export class DatepickerComponent implements  AfterViewInit {
     clear: 'glyphicon glyphicon-trash',
     close: 'glyphicon glyphicon-remove'
   };
+  private _preventLoop = false;
 
   public datePickerId: string;
 
@@ -74,9 +75,25 @@ export class DatepickerComponent implements  AfterViewInit {
 
   }
 
+  ngOnChanges() {
+    const datetimePicker = $('#' + this.datePickerId).data('DateTimePicker');
+    // Called also before InitView
+    if ( datetimePicker !== undefined) {
+      const newDate = Moment(this.selectedDate, this._ioDateFormat);
+      if (newDate.isValid()) {
+        this._preventLoop = true;
+        datetimePicker.date(newDate);
+      }
+    }
+  }
+
   onDateChange(dateEvent) {
 
-
+    if (this._preventLoop) {
+      this._preventLoop = false;
+      return;
+    }
+    
     const currentdate = dateEvent.date; // Moment | null
     const previousdate = dateEvent.oldDate; // Moment | null
   
